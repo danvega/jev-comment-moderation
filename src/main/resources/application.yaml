@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: jev-comment-moderation
+
+typesafe:
+  api-key: ${TYPESAFE_API_KEY}
