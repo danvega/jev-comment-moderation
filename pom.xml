@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.2.0-RC2</version>
+        <version>4.2.0</version>
         <relativePath/>
     </parent>
     <groupId>dev.danvega</groupId>
@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>25</java.version>
-        <spring-ai.version>2.1.0-RC2</spring-ai.version>
+        <spring-ai.version>2.1.0</spring-ai.version>
     </properties>
 
     <dependencyManagement>
@@ -36,10 +36,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webmvc</artifactId>
         </dependency>
-        <!-- The Decision API for TypeSafe Jev (no starter, so we create the bean ourselves) -->
+        <!-- The Decision API for TypeSafe Jev. The starter creates the DecisionModel bean. -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-systemone</artifactId>
+            <artifactId>spring-ai-starter-model-systemone</artifactId>
         </dependency>
 
         <dependency>

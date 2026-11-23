@@ -4,8 +4,8 @@ This is a beginner demo of the Spring AI Decision API with TypeSafe Jev. People 
 
 ## Stack
 
-- Java 25, Spring Boot 4.2.0-RC2, Spring AI 2.1.0-RC2
-- Jev comes from `spring-ai-systemone`. It has no starter, so the `DecisionModel` bean is built by hand in `CommentModerationApplication`.
+- Java 25, Spring Boot 4.2.0, Spring AI 2.1.0
+- Jev comes from `spring-ai-starter-model-systemone`. The starter creates the `DecisionModel` bean from `spring.ai.systemone.*` in `application.yaml`.
 - Build with the Maven wrapper. If the default JDK is too old, set `JAVA_HOME` to a JDK 25 first.
 
 ## Commands
@@ -16,10 +16,10 @@ This is a beginner demo of the Spring AI Decision API with TypeSafe Jev. People 
 
 ## Rules
 
-1. Keep it beginner friendly. Prefer plain code over clever code. No extra layers (services, mappers, interfaces) unless the demo needs them.
+1. Keep it beginner-friendly. Prefer plain code over clever code. No extra layers (services, mappers, interfaces) unless the demo needs them.
 2. Keep the app to two main classes: `CommentModerationApplication` and `ModerationController`. Ask before adding more.
 3. Don't add dependencies without asking.
-4. Only use Decision API classes and methods that exist in 2.1.0-RC2. Check the source jar if you are not sure. Don't guess from blog posts.
+4. Only use Decision API classes and methods that exist in 2.1.0. Check the source jar if you are not sure. Don't guess from blog posts.
 5. Config goes in `application.yaml`, not `.properties`.
 6. Never commit an API key. Read keys from environment variables.
 7. Tests must run without an API key. Use a fake `DecisionModel`, like the lambda in `ModerationControllerTest`.

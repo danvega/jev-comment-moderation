@@ -6,7 +6,7 @@ It uses the Decision API that is new in Spring AI 2.1. You don't get a paragraph
 
 ## Tested with
 
-Java 25, Spring Boot 4.2.0-RC2, Spring AI 2.1.0-RC2.
+Java 25, Spring Boot 4.2.0, Spring AI 2.1.0.
 
 ## What you need
 
@@ -16,6 +16,8 @@ Java 25, Spring Boot 4.2.0-RC2, Spring AI 2.1.0-RC2.
 ```bash
 export TYPESAFE_API_KEY=your-key-here
 ```
+
+The key goes into `spring.ai.systemone.api-key` in [application.yaml](src/main/resources/application.yaml). That is the only setup. The Spring AI starter creates the `DecisionModel` bean for you.
 
 ## Run it
 
@@ -68,12 +70,12 @@ You pick the lines, not the model. Try the last request in `requests.http`. A re
 ## Where to look
 
 - [ModerationController.java](src/main/java/dev/danvega/moderation/ModerationController.java) holds the three questions, the rules and the `/comments` endpoint.
-- [CommentModerationApplication.java](src/main/java/dev/danvega/moderation/CommentModerationApplication.java) creates the `DecisionModel` bean for Jev.
+- [application.yaml](src/main/resources/application.yaml) holds the API key property.
 - [ModerationControllerTest.java](src/test/java/dev/danvega/moderation/ModerationControllerTest.java) uses a fake Jev, so the tests run without an API key.
 
 ## Good to know
 
-- Spring AI 2.1.0-RC2 is a release candidate, not GA yet.
-- Jev comes from the `spring-ai-systemone` module. It has no Spring Boot starter, so the app builds the `DecisionModel` bean itself from a `TypeSafeClient`.
+- Jev comes from the `spring-ai-starter-model-systemone` starter. With no model set, it uses `jev-latest`.
+- Jev is not the only decision model in Spring AI 2.1. There are also OpenAI and Ollama ones. The controller only knows `DecisionModel`, so you can swap the starter without touching it.
 - Decision models are machine learning models, not rule engines. A probability is not a guarantee. That is why unsure comments go to a person.
 - If Jev refuses to answer a question, `getYesNo`, `getChoice` and `getScore` throw an exception. The app checks `response.isRefused(...)` first and holds the comment.
